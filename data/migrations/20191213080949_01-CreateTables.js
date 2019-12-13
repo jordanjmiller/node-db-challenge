@@ -6,7 +6,7 @@ exports.up = function(knex) {
         tbl.string('name', 128)
             .notNullable();
         tbl.string('description')
-        tbl.boolean('status')
+        tbl.boolean('completed')
             .notNullable()
             .defaultTo(false);
         })
@@ -22,7 +22,7 @@ exports.up = function(knex) {
         tbl.string('description')
             .notNullable();
         tbl.string('notes')
-        tbl.boolean('status')
+        tbl.boolean('completed')
             .notNullable()
             .defaultTo(false);
         tbl.integer('project_id')
