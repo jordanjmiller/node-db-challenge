@@ -14,122 +14,57 @@ router.get('/', (req, res) => {
         res.status(500).json({ message: 'Failed to get projects' });
     });
 });
+router.get('/resources', (req, res) => {
+    projects.getResources()
+    .then(resourcesList => {
+        res.status(200).json(resourcesList);
+    })
+    .catch(err => {
+      console.log(err);
+        res.status(500).json({ message: 'Failed to get resources' });
+    });
+});
+router.get('/tasks', (req, res) => {
+    projects.getTasks()
+    .then(taskList => {
+        res.status(200).json(taskList);
+    })
+    .catch(err => {
+      console.log(err);
+        res.status(500).json({ message: 'Failed to get tasks' });
+    });
+});
 
-// router.get('/:id', (req, res) => {
-//   const { id } = req.params;
+router.post('/', (req, res) => {
+  projects.addProject(req.body)
+  .then(project => {
+    res.status(201).json(project);
+  })
+  .catch (err => {
+    console.log(err);
+    res.status(500).json({ message: 'Failed to create new project' });
+  });
+});
+router.post('/resources', (req, res) => {
+  projects.addResource(req.body)
+  .then(resource => {
+    res.status(201).json(resource);
+  })
+  .catch (err => {
+    console.log(err);
+    res.status(500).json({ message: 'Failed to create new resource' });
+  });
+});
+router.post('/tasks', (req, res) => {
+  projects.addTask(req.body)
+  .then(task => {
+    res.status(201).json(task);
+  })
+  .catch (err => {
+    console.log(err);
+    res.status(500).json({ message: 'Failed to create new task' });
+  });
+});
 
-//   Schemes.findById(id)
-//   .then(scheme => {
-//     if (scheme) {
-//       res.json(scheme);
-//     } else {
-//       res.status(404).json({ message: 'Could not find scheme with given id.' })
-//     }
-//   })
-//   .catch(err => {
-//     res.status(500).json({ message: 'Failed to get schemes' });
-//   });
-// });
-
-// router.get('/:id/ingredients', (req, res) => {
-//     const { id } = req.params;
-  
-//     Recipes.findIngredients(id)
-//     .then(ingredients => {
-//       if (ingredients.length) {
-//         res.json(ingredients);
-//       } else {
-//         res.status(404).json({ message: 'Could not find ingredients for given scheme' })
-//       }
-//     })
-//     .catch(err => {
-//         console.log(err)
-//       res.status(500).json({ message: 'Failed to get ingredients' });
-//     });
-// });
-  
-// router.get('/:id/steps', (req, res) => {
-//   const { id } = req.params;
-
-//   Recipes.findSteps(id)
-//   .then(steps => {
-//     if (steps.length) {
-//       res.json(steps);
-//     } else {
-//       res.status(404).json({ message: 'Could not find steps for given scheme' })
-//     }
-//   })
-//   .catch(err => {
-//     res.status(500).json({ message: 'Failed to get steps' });
-//   });
-// });
-
-// router.post('/', (req, res) => {
-//   const schemeData = req.body;
-
-//   Schemes.add(schemeData)
-//   .then(scheme => {
-//     res.status(201).json(scheme);
-//   })
-//   .catch (err => {
-//     res.status(500).json({ message: 'Failed to create new scheme' });
-//   });
-// });
-
-// router.post('/:id/steps', (req, res) => {
-//   const stepData = req.body;
-//   const { id } = req.params; 
-
-//   Schemes.findById(id)
-//   .then(scheme => {
-//     if (scheme) {
-//       Schemes.addStep(stepData, id)
-//       .then(step => {
-//         res.status(201).json(step);
-//       })
-//     } else {
-//       res.status(404).json({ message: 'Could not find scheme with given id.' })
-//     }
-//   })
-//   .catch (err => {
-//     res.status(500).json({ message: 'Failed to create new step' });
-//   });
-// });
-
-// router.put('/:id', (req, res) => {
-//   const { id } = req.params;
-//   const changes = req.body;
-
-//   Schemes.findById(id)
-//   .then(scheme => {
-//     if (scheme) {
-//       Schemes.update(changes, id)
-//       .then(updatedScheme => {
-//         res.json(updatedScheme);
-//       });
-//     } else {
-//       res.status(404).json({ message: 'Could not find scheme with given id' });
-//     }
-//   })
-//   .catch (err => {
-//     res.status(500).json({ message: 'Failed to update scheme' });
-//   });
-// });
-
-// router.delete('/:id', (req, res) => {
-//   const { id } = req.params;
-
-//   Schemes.remove(id)
-//   .then(deleted => {
-//     if (deleted) {
-//       res.json({ removed: deleted });
-//     } else {
-//       res.status(404).json({ message: 'Could not find scheme with given id' });
-//     }
-//   })
-//   .catch(err => {
-//     res.status(500).json({ message: 'Failed to delete scheme' });
-//   });
-// });
 
 module.exports = router;
