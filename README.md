@@ -38,7 +38,8 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain the difference between `Relational Databases` and `SQL`.
+- [x] Explain the difference between `Relational Databases` and `SQL`.
+  Relational Databases are the thing that holds the data, SQL is the tool used to access it
 
 - [x]  Why do tables need a `primary key`?
   Like keys in react there needs to be a unique identifier for each pice of data
@@ -46,7 +47,8 @@ Demonstrate your understanding of this week's concepts by answering the followin
 - [X] What is the name given to a table column that references the primary key on another table.
   Foreign Key
 
-- [ ] What do we need in order to have a _many to many_ relationship between two tables.
+- [x] What do we need in order to have a _many to many_ relationship between two tables.
+  Multiple records in a table are referenced with multiple records in another table
 
 
 ## Minimum Viable Product
@@ -55,15 +57,15 @@ Take the steps necessary to complete the project from scratch. Start by initiali
 
 Complete the following tasks:
 
-- [ ] Design the data model and use _knex migrations_ to create the database and tables.
+- [x] Design the data model and use _knex migrations_ to create the database and tables.
 - [ ] Build an API with endpoints for:
   - [ ] adding resources.
   - [ ] retrieving a list of resources.
   - [ ] adding projects.
-  - [ ] retrieving a list of projects.
+  - [x] retrieving a list of projects.
   - [ ] adding tasks.
   - [ ] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
-- [ ] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
+- [x] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
 
 For example, instead of returning a `task` that looks like this:
 
@@ -89,12 +91,12 @@ The API should return:
 
 <!-- - a `project` can have multiple `tasks`. -->
 <!-- - a `task` belongs to only one `project`. -->
-- a `project` can use multiple `resources`.
-- the same `resource` can be used in multiple `projects`.
+<!-- - a `project` can use multiple `resources`. -->
+<!-- - the same `resource` can be used in multiple `projects`. -->
 <!-- - when adding `projects` the client must provide a name, the description is optional. -->
 <!-- - when adding `resources` the client must provide a name, the description is optional. -->
 <!-- - when adding a `task` the client must provide a description, the notes are optional. -->
-- when adding a `task` the client must provide the `id` of an existing project.
+<!-- - when adding a `task` the client must provide the `id` of an existing project. -->
 <!-- - for `projects` and `tasks` if no value is provided for the `completed` property, the API should provide a default value of `false`. -->
 
 ### Entities
@@ -164,7 +166,7 @@ Add an endpoint for retrieving a `project` by its `id` that returns an object wi
 
 Add the remaining CRUD operations for projects and tasks.
 
-Use `knex` to add _data seeding_ scripts for projects and tasks.
+<!-- Use `knex` to add _data seeding_ scripts for projects and tasks. -->
 
 Add support for the concept of `contexts`. A context is something like _at home_, _at work_ or _at computer_. The idea is that some tasks require one or more `contexts` in order to be worked on. For example, the task of _file income taxes_ may require that you are _at home_, _at computer_ and _online_ so if you are _at work_ and look at the list of pending tasks you could do in your current context, filing your taxes will not be one of them.
 
